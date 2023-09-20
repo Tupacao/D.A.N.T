@@ -33,3 +33,7 @@ ALTER TABLE tablename DROP COLUMN columnname;
 
 --rename coluna
 ALTER TABLE tablename RENAME COLUMN columnname1 TO columnname2;
+
+-- Alterar o tipo e tamanho da coluna
+ALTER TABLE minha_tabela
+ALTER COLUMN minha_coluna TYPE VARCHAR(255);

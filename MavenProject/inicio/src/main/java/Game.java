@@ -1,13 +1,16 @@
 public class Game {
     public int appid;
     public String nome;
+    public String json;
+
     Game(){
 
     }
 
-    Game(int appid, String Nome){
+    Game(int appid, String Nome,String json){
         this.appid = appid;
         this.nome = Nome;
+        this.json = json;
     }   
 
 
@@ -19,6 +22,9 @@ public class Game {
     public String getNome() {
         return nome;
     }
+    public String getJson() {
+        return json;
+    }
 
     //setters
     public void setAppid(int appid) {
@@ -27,5 +33,9 @@ public class Game {
     public void setNome(String Nome) {
         this.nome = Nome;
     }
+    public void setJson(String json) {
+        this.json = json;
+    }
+    
 
 }
