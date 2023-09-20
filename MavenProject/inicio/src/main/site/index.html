@@ -10,19 +10,18 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital@1&display=swap" rel="stylesheet">
+    <link rel="icon" href="content/dant3.png">
     <title>D.A.N.T</title>
 </head>
 
 <body>
 
     <header>
-        <div class="container-bloco">
+        <div class="container-bloco" id="container-bloco">
             <div class="container-esq">
-
                 <div class="Login">
                     <h1>REALIZE O LOGIN</h1>
                 </div>
-
                 <div class="formulario">
                     <form>
                         <input type="text" placeholder="Email" required>
@@ -34,22 +33,40 @@
                         </div>
                     </form>
                 </div>
-
                 <div class="new-usuario">
-                    <h5>NOVO USUARIO? <a href="#">CADASTRAR</a></h5>
+                    <h5>NOVO USUARIO? <span id="cadastrar" onclick="Mudar ()">CADASTRAR</span> </h5>
                 </div>
-
             </div>
             <div class="container-dir">
-                <img src="#" width="250px" height="300px">
+                <img src="content/dant3.png" width="100%" height="100%">
             </div>
         </div>
     </header>
 
     <section>
-
-
-
+        <div class="container-registrar">
+            <div class="imagem">
+                <img src="content/dant2.png" width="100%" height="100%">
+            </div>
+            <div class="dados">
+                <div class="primeiros">
+                    <input type="text" placeholder="Nome Completo" required>
+                    <br>
+                    <input type="date" placeholder="Data de Nascimento" required>
+                    <br>
+                    <input type="email" placeholder="Email" required>
+                    <br>
+                    <input type="password" placeholder="Senha">
+                </div>
+                <div class="enviar">
+                    <input type="submit" value="Cadastrar">
+                </div>
+                <div class="termos">
+                    <span><a href="bobo.html"> Termos de Uso </a></span>
+                    <input type="checkbox" value = "Y">
+                </div>
+            </div>
+        </div>
     </section>
 
     <article>
