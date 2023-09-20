@@ -1,7 +1,8 @@
-public class Main {
+
+    /*
+     public class Main {
     public static void main(String[] args) {
-        String username = "gaok1";
-        String password = "2004";
+
 
         GameDAO gamedao = new GameDAO();
 
@@ -21,6 +22,8 @@ public class Main {
          gamedao.closeConnection();
         
     }
+
+     */
     //Json abaixo
     /*{
                 "appid": 2397370,
@@ -58,4 +61,4 @@ public class Main {
                 "appid": 2397490,
                 "name": "The Tarot Experience"
             }, */
-}
+//}
