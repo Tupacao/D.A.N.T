@@ -9,71 +9,22 @@ import java.net.*;
 
 public class Main {
 
+   public static void main(String[] args) throws Exception {
 
-    public static String getHtml(String endereco) {
-      URL url;
-      InputStream is = null;
-      BufferedReader br;
-      String resp = "", line;
+      GameDAO gamedao = new GameDAO();
 
-      try {
-         url = new URL(endereco);
-         is = url.openStream(); // throws an IOException
-         br = new BufferedReader(new InputStreamReader(is));
+      LinkedList<Game> gameList = gamedao.GetAllGames();
 
-         while ((line = br.readLine()) != null) {
-            resp += line + "\n";
-         }
-      } catch (MalformedURLException mue) {
-         mue.printStackTrace();
-      } catch (IOException ioe) {
-         ioe.printStackTrace();
-      }
+      System.out.println("todos os jogos:\n\n");
+      // tratar exceção null pointed no for each
 
-      try {
-         is.close();
-      } catch (IOException ioe) {
-         // nothing to see here
+      gameList.forEach(gamedata -> {
+         System.out.println(gamedata.getAppid());
 
-      }
+      });
 
-      return resp;
+      gamedao.closeConnection();
+
    }
 
-
-    public static void main(String[] args)  throws Exception {
-
-
-        GameDAO gamedao = new GameDAO();
-
-        // Exemplo de inserção de um jogo
-       
-    
-        //gamedao.removegameByID(2397450);
-
-        // Feche a conexão quando não precisar mais
-       
-
-        Game game = gamedao.getGameByID(2397540);
-
-        System.out.println("jogo encontrado pelo id:");
-        System.out.println(game.getNome());
-        LinkedList<Game> gameList = gamedao.GetAllGames();
-        System.out.println("todos os jogos:\n\n");
-
-        gameList.forEach(numero -> {
-            String GameUrl ="http://store.steampowered.com/api/appdetails/?appids=";
-            GameUrl += numero.getAppid();
-            System.out.println("game url = " + GameUrl);
-            String html = getHtml(GameUrl);
-            System.out.println(html);
-        });
-     
-        String json;
-
-         gamedao.closeConnection();
-        
-    }
-
-     
 }
