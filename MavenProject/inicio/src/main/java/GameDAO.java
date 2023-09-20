@@ -3,6 +3,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.LinkedList;
 
 public class GameDAO { 
     
@@ -87,6 +88,21 @@ public class GameDAO {
         return game;
     }
     
+
+    public LinkedList<Game> GetAllGames()throws Exception{
+        LinkedList<Game> games = new LinkedList<Game>();
+        
+        String sql = "SELECT * FROM games where appid < 100";
+
+        PreparedStatement preparedStatement = conexao.prepareStatement(sql);
+        ResultSet resultSet = preparedStatement.executeQuery();
+         while (resultSet.next()) {
+                   games.add( new Game(resultSet.getInt("appid"), resultSet.getString("nome")));
+                   
+                }
+        return games;
+
+    }
 
 
 
