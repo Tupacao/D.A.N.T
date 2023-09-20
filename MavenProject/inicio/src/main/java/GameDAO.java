@@ -39,11 +39,12 @@ public class GameDAO {
             return status;
         }
 
-    public void insertGame(int appid, String name) {
-        String sql = "INSERT INTO games (appid, nome) VALUES (?, ?)";
+    public void insertGame(int appid, String name,String json) {
+        String sql = "INSERT INTO games (appid, nome,json) VALUES (?, ?,?)";
         try (PreparedStatement preparedStatement = conexao.prepareStatement(sql)) {
             preparedStatement.setInt(1, appid);
             preparedStatement.setString(2, name);
+            preparedStatement.setString(3, json);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -78,6 +79,7 @@ public class GameDAO {
                     game = new Game();
                     game.setAppid(resultSet.getInt("appid"));
                     game.setNome(resultSet.getString("nome"));
+                    game.setNome(resultSet.getString("json"));
                 }
             }
         } catch (SQLException e) {
@@ -89,6 +91,9 @@ public class GameDAO {
     }
     
 
+    
+
+
     public LinkedList<Game> GetAllGames()throws Exception{
         LinkedList<Game> games = new LinkedList<Game>();
         
@@ -97,7 +102,7 @@ public class GameDAO {
         PreparedStatement preparedStatement = conexao.prepareStatement(sql);
         ResultSet resultSet = preparedStatement.executeQuery();
          while (resultSet.next()) {
-                   games.add( new Game(resultSet.getInt("appid"), resultSet.getString("nome")));
+                   games.add( new Game(resultSet.getInt("appid"), resultSet.getString("nome"),resultSet.getString("json")));
                    
                 }
         return games;
@@ -105,6 +110,18 @@ public class GameDAO {
     }
 
 
+    public void InsertJson(int appid,String json){
+        String sql = "UPDATE games SET json = ? WHERE appid = ?";
+        try (PreparedStatement preparedStatement = conexao.prepareStatement(sql)) {
+            //checar se game existe por appid
+            preparedStatement.setString(1, json);
+            preparedStatement.setInt(2, appid);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException("Erro ao inserir json", e);
+        }
+    }
 
 
     public void closeConnection() {

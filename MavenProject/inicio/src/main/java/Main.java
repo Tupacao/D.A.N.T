@@ -19,7 +19,11 @@ public class Main {
       // tratar exceção null pointed no for each
 
       gameList.forEach(gamedata -> {
-         System.out.println(gamedata.getAppid());
+         gamedata.setJson(GetGameJson.GetGameJsonData(gamedata.getAppid()));
+         System.out.println(gamedata.getJson());
+         
+         gamedao.InsertJson(gamedata.getAppid(), gamedata.getJson());
+
 
       });
 
