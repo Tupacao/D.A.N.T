@@ -18,11 +18,14 @@ public class GetGameJson {
 
             int responseCode = connection.getResponseCode();
             if (responseCode == HttpURLConnection.HTTP_MOVED_TEMP || responseCode == HttpURLConnection.HTTP_MOVED_PERM) {
-                // Se o código de resposta for 302 (redirecionamento)
-                String newUrl = connection.getHeaderField("Location"); // Pega a nova URL
-                connection = (HttpURLConnection) new URL(newUrl).openConnection(); // Abre conexão com a nova URL
-            }
 
+                // Se o código de resposta for 302 (redirecionamento)
+                
+                String newUrl = connection.getHeaderField("Location"); // Pega a nova URL
+
+                connection = (HttpURLConnection) new URL(newUrl).openConnection(); // Abre conexão com a nova URL
+
+            }
             responseCode = connection.getResponseCode(); // Obtém o código de resposta da nova URL
 
             if (responseCode == HttpURLConnection.HTTP_OK) {

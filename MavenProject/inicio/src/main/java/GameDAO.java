@@ -79,7 +79,8 @@ public class GameDAO {
                     game = new Game();
                     game.setAppid(resultSet.getInt("appid"));
                     game.setNome(resultSet.getString("nome"));
-                    game.setNome(resultSet.getString("json"));
+
+                    game.setJson(resultSet.getString("json"));
                 }
             }
         } catch (SQLException e) {
@@ -97,7 +98,7 @@ public class GameDAO {
     public LinkedList<Game> GetAllGames()throws Exception{
         LinkedList<Game> games = new LinkedList<Game>();
         
-        String sql = "SELECT * FROM games where appid > 200 ORDER BY appid;";
+        String sql = "SELECT * FROM games where appid >= 3629 ORDER BY appid;";
 
         PreparedStatement preparedStatement = conexao.prepareStatement(sql);
         ResultSet resultSet = preparedStatement.executeQuery();
