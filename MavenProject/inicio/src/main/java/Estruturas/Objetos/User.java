@@ -13,7 +13,7 @@ public class User {
     User() {
 
     }
-
+    //construtor para inserir no banco
    public User(String nome, String senha, String email, byte[] foto, java.sql.Date dataNasc, java.sql.Date dataCadastro,boolean assinatura) {
     
         this.nome = nome;
@@ -27,7 +27,7 @@ public class User {
 
 
     }
-
+    //construtor para pegar do banco
     public   User(int id,String nome, String senha, String email, byte[] foto, java.sql.Date dataNasc, java.sql.Date dataCadastro, boolean assinatura) {
         this.id = id;
         this.nome = nome;

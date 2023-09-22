@@ -12,12 +12,14 @@ import com.google.gson.JsonParser;*/
 import java.util.LinkedList;
 import Estruturas.Objetos.Game;
 import Estruturas.GameDAO; 
-
+import Estruturas.PostDAO;
+import Estruturas.Objetos.Post;
 
 public class Main {
    
    public static void main(String[] args) throws Exception {
 
+      /* 
       GameDAO gamedao = new GameDAO();
       
       LinkedList<Game> gameList = gamedao.GetAllGames();
@@ -33,10 +35,22 @@ public class Main {
 
 
       });
+      */
       
+
+  PostDAO postdao = new PostDAO();
      
-     
+      LinkedList<Post> postList = postdao.getAllForumPosts(0,0,0);
       
+      System.out.println("todos os posts:\n\n");
+
+      postList.forEach  (  postdata ->  System.out.println(postdata.getPostagem())    );
+
+      
+    
+     
+
+    
     
    }
 

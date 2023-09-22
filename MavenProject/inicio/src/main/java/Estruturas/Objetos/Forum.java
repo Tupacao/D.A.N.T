@@ -5,12 +5,14 @@ public class Forum {
     String Nome;
     int id;
 
+    //construtor para carregar forum
     public Forum(int GameID, String Nome, int id) { // lembre que o id do forum é serial, não precisa inseri-lo no bd
         this.GameID = GameID;
         this.Nome = Nome;
         this.id = id;
     }
-
+    
+    //construtor para lançar forum
     public Forum(int GameID, String Nome) { // lembre que o id do forum é serial, não precisa inseri-lo no bd
         this.GameID = GameID;
         this.Nome = Nome;
