@@ -137,5 +137,20 @@ public class UserDAO extends DAO {
         }
     }
 
+    //atualizar assinatura de usuario
+    public boolean updateAssinaturaByID(int id, boolean assinatura) {
+        String sql = "UPDATE usuario SET assinatura = ? WHERE id = ?";
+        try {
+            PreparedStatement preparedStatement = conexao.prepareStatement(sql);
+            preparedStatement.setBoolean(1, assinatura);
+            preparedStatement.setInt(2, id);
+            preparedStatement.executeUpdate();
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
 
 }

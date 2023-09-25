@@ -12,8 +12,8 @@ public class DAO {
     public DAO() {
         conectar();
     }
-
-    public boolean conectar() {
+                    
+    public boolean conectar() { 
             String driverName = "org.postgresql.Driver";                    
             String serverName = "localhost";
             String mydatabase = "DANT";

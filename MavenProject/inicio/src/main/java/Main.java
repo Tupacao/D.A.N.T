@@ -19,7 +19,7 @@ public class Main {
    
    public static void main(String[] args) throws Exception {
 
-      /* 
+     
       GameDAO gamedao = new GameDAO();
       
       LinkedList<Game> gameList = gamedao.GetAllGames();
@@ -35,8 +35,8 @@ public class Main {
 
 
       });
-      */
       
+      /*  
 
   PostDAO postdao = new PostDAO();
      
@@ -47,7 +47,7 @@ public class Main {
       postList.forEach  (  postdata ->  System.out.println(postdata.getPostagem())    );
 
       
-    
+    */
      
 
     
