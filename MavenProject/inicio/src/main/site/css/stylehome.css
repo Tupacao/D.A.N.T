@@ -1,0 +1,218 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Barra de navegação */
+
+.container-navegar{
+    background-color: lightblue;
+    display: flex;
+    justify-content: space-between;
+}
+
+.links ul{
+    list-style-type: none;
+    display: flex;
+    gap: 10px;
+}
+
+.links ul li a{
+    color: black;
+    text-decoration: none;
+}
+
+/* Esquerda-navegação */
+
+.container-navegar .esquerda{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-items: center;
+}
+
+.container-navegar .esquerda img{
+    display: flex;
+    align-items: center;
+}
+
+.links ul li{
+    background-color: lightgray;
+    padding: 5px;
+    border-radius: 10px;
+    border: 1px solid black;
+    transition: .3s;
+}
+
+.links ul li:hover{
+    transform: scale(1.05);
+}
+
+/* Hamburger */
+
+.hamburguer{
+    display: none;
+}
+
+/* Direita-navegação */
+
+.container-navegar .direita{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.direita .profile img{
+    border-radius: 30px;
+    /* mudar */
+}
+
+/* DIV Nav */
+
+/* header{
+    position: sticky;
+    top: 0px;
+} */
+
+/* Section */
+
+/* Carrosel topo */
+
+.container-carrosel{
+    margin-top: 100px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    background-color: lightcoral;
+}
+
+.container-carrosel .imagem-dir{ 
+    margin-top: 5px;
+}
+
+/* Kind of games */
+
+.container-classificacao{
+    margin-top: 150px;
+    display: flex;
+    justify-content: center;
+}
+
+.container-classificacao .blocos{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.container-classificacao .blocos .bloco{
+    background-color: lightcyan;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid black;
+    transition: .3s;
+}
+
+.container-classificacao .blocos .bloco h1 a{
+    text-decoration: none;
+    color: black;
+}
+
+.container-classificacao .blocos .bloco:hover{
+    background-color: lightgreen;
+    transform: scale(1.05);
+}
+
+/* Carrosel meio */
+
+.container-overflow{
+    margin: 50px 10px;
+}
+
+.container-overflow .carrosel{
+    margin-top: 50px;
+}
+
+.container-jogos .seta-esq, .seta-dir{
+    cursor: pointer;
+}
+
+.container-overflow .carrosel .text{
+    margin-bottom:35px;
+    background-color: lightgray;
+    padding: 5px;
+    border: 1px solid black;
+    width: 30%;
+}
+
+.container-overflow .carrosel .container-jogos{
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
+
+.container-overflow .carrosel .container-jogos .seta{
+    cursor: pointer;
+}
+
+.container-overflow .carrosel .container-jogos .jogos{
+    display: flex;
+    gap: 20px;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+.jogos::-webkit-scrollbar{
+    display: none;
+}
+
+
+/* Botões por ai da página */
+
+.button{
+    margin-top: 150px;
+    margin-bottom: 150px;
+    display: flex;
+    justify-content: center;
+}
+
+.button h1{
+    background-color: lightgreen;
+    padding: 10px;
+    width: 30%;
+    text-align: center;
+    transition: .3s;
+}
+
+.button h1:hover{
+    transform: scale(1.05);
+    border-radius: 5px;
+}
+
+.button h1 a{
+    text-decoration: none;
+    color: black;
+}
+
+/* Foooter */
+
+footer{
+    background-color: lightgoldenrodyellow;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+@media (max-width: 800px){
+    .container-carrosel .imagem-dir{ 
+        margin-top: 5px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+}

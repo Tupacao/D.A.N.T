@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/e65e29a543.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="style.css">
-    <script src="java.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/java.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital@1&display=swap" rel="stylesheet">
@@ -29,7 +29,7 @@
                         <input type="password" id = "senha" placeholder="Senha" required>
                         <br>
                         <div class="button">
-                            <h3 onclick="Confirmar ()">Entrar</h3>
+                            <h3 onclick="Confirmar ()">ENTRAR</h3>
                         </div>
                     </form>
                 </div>
@@ -63,10 +63,10 @@
                     </div>
                     <div class="termos">
                         <span><a href="bobo.html"> TERMOS DE USO </a></span>
-                        <input type="checkbox" value = "Y" required>
+                        <input type="checkbox" id = "termodeuso" required>
                     </div>
-                    <div class="button">
-                        <h3 onclick="Cadastrar ()">Cadastrar</h3>
+                    <div class="submit">
+                        <input type="submit" onclick="Cadastrar ()" value="CADASTRAR">
                     </div>
                     <H5 id="voltar" onclick="Voltar ()">VOLTAR</H5>
                 </form>
