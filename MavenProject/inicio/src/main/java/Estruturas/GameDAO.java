@@ -1,43 +1,21 @@
-import java.sql.Connection;
-import java.sql.DriverManager;
+package Estruturas;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.LinkedList;
+import  Estruturas.Objetos.Game;
 
-public class GameDAO { 
+public class GameDAO extends DAO{ 
     
 
-
-    private Connection conexao;
 
     public GameDAO() {
-        conectar();
+        super();
     }
 
-    public boolean conectar() {
-            String driverName = "org.postgresql.Driver";                    
-            String serverName = "localhost";
-            String mydatabase = "DANT";
-            int porta = 5432;
-            String url = "jdbc:postgresql://" + serverName + ":" + porta +"/" + mydatabase;
-            String username = "gaok1";
-            String password = "2004";
-            boolean status = false;
-    
-            try {
-                Class.forName(driverName);
-                conexao = DriverManager.getConnection(url, username, password);
-                status = (conexao == null);
-                System.out.println("Conexão efetuada com o postgres!\n\n");
-            } catch (ClassNotFoundException e) { 
-                System.err.println("Conexão NÃO efetuada com o postgres -- Driver não encontrado -- " + e.getMessage());
-            } catch (SQLException e) {
-                System.err.println("Conexão NÃO efetuada com o postgres -- " + e.getMessage());
-            }
-    
-            return status;
-        }
+   
+
 
     public void insertGame(int appid, String name,String json) {
         String sql = "INSERT INTO games (appid, nome,json) VALUES (?, ?,?)";
@@ -79,7 +57,8 @@ public class GameDAO {
                     game = new Game();
                     game.setAppid(resultSet.getInt("appid"));
                     game.setNome(resultSet.getString("nome"));
-                    game.setNome(resultSet.getString("json"));
+
+                    game.setJson(resultSet.getString("json"));
                 }
             }
         } catch (SQLException e) {
@@ -97,14 +76,16 @@ public class GameDAO {
     public LinkedList<Game> GetAllGames()throws Exception{
         LinkedList<Game> games = new LinkedList<Game>();
         
-        String sql = "SELECT * FROM games where appid > 200 ORDER BY appid;";
+        String sql = "SELECT * FROM games where appid > 25980 ORDER BY appid;";
 
         PreparedStatement preparedStatement = conexao.prepareStatement(sql);
         ResultSet resultSet = preparedStatement.executeQuery();
+
          while (resultSet.next()) {
                    games.add( new Game(resultSet.getInt("appid"), resultSet.getString("nome"),resultSet.getString("json")));
                    
                 }
+
         return games;
 
     }
@@ -124,15 +105,7 @@ public class GameDAO {
     }
 
 
-    public void closeConnection() {
-        if (conexao != null) {
-            try {
-                conexao.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-    }
+   
 }
 
     

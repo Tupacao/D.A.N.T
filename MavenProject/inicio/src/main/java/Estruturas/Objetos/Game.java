@@ -1,13 +1,14 @@
-public class Game {
+package Estruturas.Objetos;
+public class Game  {
     public int appid;
     public String nome;
     public String json;
 
-    Game(){
+    public Game(){
 
     }
 
-    Game(int appid, String Nome,String json){
+    public Game(int appid, String Nome,String json){
         this.appid = appid;
         this.nome = Nome;
         this.json = json;

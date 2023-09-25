@@ -1,10 +1,13 @@
+package Estruturas;
+import java.sql.PreparedStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+
 public class DAO {
     
-    private Connection conexao;
+    protected Connection conexao;
 
     public DAO() {
         conectar();
