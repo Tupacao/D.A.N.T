@@ -9,15 +9,28 @@ function MudarCard(element) {
     primario.src = aux2;
 }
 
-// Classificações
+const imagemESQ = document.querySelector('.container-carrosel .imagem-esq');
+const imagensDIR = document.querySelector('.container-carrosel .imagem-dir')
+const imagemContainer = [];
+let imagemSTR = "";
+
+for (let i = 0; i < 5; i++) {
+    imagemContainer[i] = '#';
+}
+
+imagemESQ.innerHTML = `<img src="${imagemContainer[0]}" id="card-prymario" width="500px" height="400px">`
+
+for (let i = 1; i <= 5; i++) {
+    imagemSTR+= `<div class = "card"><img src="${imagemContainer[i]}" id="card-1" width="200px" height="100px" onclick="MudarCard(this)"> </div>`
+}
+
+imagensDIR.innerHTML = imagemSTR; 
+
+// Barra de Categorias
 
 const blocosDIV = document.getElementById('blocos');
-
-let vetorClasse [];
-
-// <div class="bloco">
-//                     <h1><a href="">NADA</a></h1>
-//                 </div>
+const vetorClasse = [];
+let blocoSTR = "";
 
 for (let i = 0; i < 5; i++) {
     vetorClasse[i] = {
@@ -26,19 +39,24 @@ for (let i = 0; i < 5; i++) {
     }
 }
 
+for (let i = 0; i < 5; i++) {
+    blocoSTR +=
+        `
+    <div class="bloco">
+        <h1><a href="${vetorClasse[i].href}">${vetorClasse[i].categoria}</a></h1>
+    </div>
+    `
+}
 
-
-
-
-
+blocosDIV.innerHTML = blocoSTR;
 
 // Containers do meio
 
 const seta_esq = document.getElementById('seta-esq');
 const seta_dir = document.getElementById('seta-dir');
 const gameDIV = document.getElementById('jogos');
+const data = [];
 
-let data = [];
 
 for (let i = 0; i <= 20; i++) {
     data[i] = {
@@ -48,7 +66,9 @@ for (let i = 0; i <= 20; i++) {
 }
 let start = 0, end = 6;
 
-function vetor (){
+vetor();
+
+function vetor() {
     let str = "";
     for (let i = start; i < end; i++) {
         str += `<div class="content">
@@ -67,19 +87,28 @@ function vetor (){
 
 
 seta_dir.addEventListener("click", () => {
-    if(end < data.length - 1){
-        start+=2;
-        end+=2;
+    if (end < data.length - 1) {
+        start += 2;
+        end += 2;
         vetor();
         console.log(end)
     }
 })
 
 seta_esq.addEventListener("click", () => {
-    if(start >= 0){
-        start-=2;
-        end-=2;
+    if (start >= 0) {
+        start -= 2;
+        end -= 2;
         vetor();
         console.log(end)
     }
 })
+
+// let number = 30350130
+// let teste = `https://viacep.com.br/ws/${number}/json/`
+
+// fetch(teste)
+//     .then(res => res.json())
+//     .then(data => {
+//         console.log(data.bairro);
+//     })
