@@ -27,7 +27,8 @@
       <artifactId>httpclient</artifactId>
       <version>4.5.13</version> <!-- Use a versão mais recente disponível -->
     </dependency>
-    <groupId>com.sparkjava</groupId>
+    <dependency>
+			<groupId>com.sparkjava</groupId>
 			<artifactId>spark-core</artifactId>
 			<version>2.9.3</version>
 		</dependency>
