@@ -62,5 +62,4 @@ function Cadastrar (){
         alert("Preencha todos os dados");
     }
 
-
 }
