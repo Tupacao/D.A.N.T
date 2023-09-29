@@ -76,7 +76,7 @@ public class GameDAO extends DAO{
     public LinkedList<Game> GetAllGames()throws Exception{
         LinkedList<Game> games = new LinkedList<Game>();
         
-        String sql = "SELECT * FROM games where appid > 25980 ORDER BY appid;";
+        String sql = "SELECT * FROM games where appid > 32750 ORDER BY appid;";
 
         PreparedStatement preparedStatement = conexao.prepareStatement(sql);
         ResultSet resultSet = preparedStatement.executeQuery();

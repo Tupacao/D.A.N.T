@@ -35,23 +35,7 @@ public class Main {
 
 
       });
-      
-      /*  
-
-  PostDAO postdao = new PostDAO();
-     
-      LinkedList<Post> postList = postdao.getAllForumPosts(0,0,0);
-      
-      System.out.println("todos os posts:\n\n");
-
-      postList.forEach  (  postdata ->  System.out.println(postdata.getPostagem())    );
-
-      
-    */
-     
-
-    
-    
+       
    }
 
 }
