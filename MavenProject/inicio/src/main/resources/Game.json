@@ -1,4 +1,4 @@
-{ 
+{
     "2397370": {
         "success": true,
         "data": {
@@ -72,7 +72,7 @@
                 "mac": false,
                 "linux": false
             },
-            "categories": [ 
+            "categories": [
                 {
                     "id": 2,
                     "description": "Um jogador"
@@ -82,7 +82,7 @@
                     "description": "Compat. total com controle"
                 }
             ],
-            "genres": [ 
+            "genres": [
                 {
                     "id": "4",
                     "description": "Casual"
@@ -96,7 +96,7 @@
                     "description": "Acesso Antecipado"
                 }
             ],
-            "screenshots": [ 
+            "screenshots": [
                 {
                     "id": 0,
                     "path_thumbnail": "https:\/\/cdn.akamai.steamstatic.com\/steam\/apps\/2397370\/ss_d2bffcd7f82dbb3a25c13f35c17300be20d59464.600x338.jpg?t=1689091740",
@@ -123,7 +123,7 @@
                     "path_full": "https:\/\/cdn.akamai.steamstatic.com\/steam\/apps\/2397370\/ss_63b43e998b72a7269870b9701ae6c4336e11b3d5.1920x1080.jpg?t=1689091740"
                 }
             ],
-            "movies": [ 
+            "movies": [
                 {
                     "id": 256941239,
                     "name": "MissileCollectorMan",
@@ -139,7 +139,7 @@
                     "highlight": true
                 }
             ],
-            "release_date": { 
+            "release_date": {
                 "coming_soon": false,
                 "date": "15\/mai.\/2023"
             },
@@ -362,3 +362,5 @@
         }
     }
 } 
+
+   
