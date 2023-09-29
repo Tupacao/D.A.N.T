@@ -4,20 +4,15 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.LinkedList;
-import  Estruturas.Objetos.Game;
+import Estruturas.Objetos.Game;
 
-public class GameDAO extends DAO{ 
-    
-
+public class GameDAO extends DAO {
 
     public GameDAO() {
         super();
     }
 
-   
-
-
-    public void insertGame(int appid, String name,String json) {
+    public void insertGame(int appid, String name, String json) {
         String sql = "INSERT INTO games (appid, nome,json) VALUES (?, ?,?)";
         try (PreparedStatement preparedStatement = conexao.prepareStatement(sql)) {
             preparedStatement.setInt(1, appid);
@@ -30,12 +25,11 @@ public class GameDAO extends DAO{
         }
     }
 
-
-      public void removegameByID(int appid) {
+    public void removegameByID(int appid) {
         String sql = "DELETE FROM games WHERE appid = ?";
         try (PreparedStatement preparedStatement = conexao.prepareStatement(sql)) {
             preparedStatement.setInt(1, appid);
-           
+
             preparedStatement.executeUpdate();
 
         } catch (SQLException e) {
@@ -45,56 +39,55 @@ public class GameDAO extends DAO{
     }
 
     public Game getGameByID(int appid) {
-        Game game = null;
-        String sql = "SELECT * FROM games WHERE appid = ?";
-    
-        try (PreparedStatement preparedStatement = conexao.prepareStatement(sql)) {
+         Game game = null;
+        if (appid >= 0) {
+           
+            String sql = "SELECT * FROM games WHERE appid = ?";
 
-            preparedStatement.setInt(1, appid);
+            try (PreparedStatement preparedStatement = conexao.prepareStatement(sql)) {
 
-            try (ResultSet resultSet = preparedStatement.executeQuery()) {
-                if (resultSet.next()) {
-                    game = new Game();
-                    game.setAppid(resultSet.getInt("appid"));
-                    game.setNome(resultSet.getString("nome"));
+                preparedStatement.setInt(1, appid);
 
-                    game.setJson(resultSet.getString("json"));
+                try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                    if (resultSet.next()) {
+                        game = new Game();
+                        game.setAppid(resultSet.getInt("appid"));
+                        game.setNome(resultSet.getString("nome"));
+
+                        game.setJson(resultSet.getString("json"));
+                    }
                 }
+            } catch (SQLException e) {
+                e.printStackTrace();
+                throw new RuntimeException("Erro ao buscar o jogo por appid", e);
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
-            throw new RuntimeException("Erro ao buscar o jogo por appid", e);
+
+           
         }
-    
-        return game;
+    return game;
     }
-    
 
-    
-
-
-    public LinkedList<Game> GetAllGames()throws Exception{
+    public LinkedList<Game> GetAllGames() throws Exception {
         LinkedList<Game> games = new LinkedList<Game>();
-        
-        String sql = "SELECT * FROM games where appid > 25980 ORDER BY appid;";
+
+        String sql = "SELECT * FROM games where appid > 32750 ORDER BY appid;";
 
         PreparedStatement preparedStatement = conexao.prepareStatement(sql);
         ResultSet resultSet = preparedStatement.executeQuery();
 
-         while (resultSet.next()) {
-                   games.add( new Game(resultSet.getInt("appid"), resultSet.getString("nome"),resultSet.getString("json")));
-                   
-                }
+        while (resultSet.next()) {
+            games.add(new Game(resultSet.getInt("appid"), resultSet.getString("nome"), resultSet.getString("json")));
+
+        }
 
         return games;
 
     }
 
-
-    public void InsertJson(int appid,String json){
+    public void InsertJson(int appid, String json) {
         String sql = "UPDATE games SET json = ? WHERE appid = ?";
         try (PreparedStatement preparedStatement = conexao.prepareStatement(sql)) {
-            //checar se game existe por appid
+            // checar se game existe por appid
             preparedStatement.setString(1, json);
             preparedStatement.setInt(2, appid);
             preparedStatement.executeUpdate();
@@ -104,9 +97,4 @@ public class GameDAO extends DAO{
         }
     }
 
-
-   
 }
-
-    
-
