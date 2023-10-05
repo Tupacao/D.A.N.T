@@ -9,6 +9,7 @@ for (let i = 0; i < 20; i++) {
         imgsrc: "",
         nome: `Nome: ${i}`,
         new: "Algo mais",
+        appid: i,
     };
 }
 
@@ -16,16 +17,18 @@ let aux = vetorGAMES.length;
 
 for (let i = 0; i < vetorGAMES.length / 2; i++) {
     gameSTR +=
-        `
-    <div class = "game">
-        <div class="imagem">
-            <img src="${vetorGAMES[i].imgsrc}" width="100%" height="300">
+        `    
+    <a href="GamePage.html?appid=${vetorGAMES[i].appid}" class="game">
+        <div class = "game_">
+            <div class="imagem">
+                <img src="${vetorGAMES[i].imgsrc}" width="100%" height="300">
+            </div>
+            <div class="descricao">
+                <h5>${vetorGAMES[i].nome}</h5>
+                <h6>${vetorGAMES[i].new}</h6>
+            </div>
         </div>
-        <div class="descricao">
-            <h5>${vetorGAMES[i].nome}</h5>
-            <h6>${vetorGAMES[i].new}</h6>
-        </div>
-    </div>
+    </a>
     `
 }
 
