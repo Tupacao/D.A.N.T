@@ -143,7 +143,6 @@ span{
     justify-content: center;
     margin-top: 50px;
     background-color: lightblue;
-    gap: 10px;
 }
 
 /* Esquerda imagem */
@@ -152,7 +151,6 @@ span{
     display: flex;
     justify-content: center;
     width: 600px;
-    height: 200px;
     background-color: lightcoral;
 }
 

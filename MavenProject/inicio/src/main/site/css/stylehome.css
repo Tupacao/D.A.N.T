@@ -19,6 +19,11 @@ header{
     background-color: lightcoral;
 }
 
+.container-carrosel .imagem-esq{
+    width: 50%;
+    height: 50vh;
+}
+
 .container-carrosel .imagem-dir{ 
     margin-top: 5px;
 }
@@ -27,17 +32,14 @@ header{
 
 .container-classificacao{
     margin-top: 150px;
-    display: flex;
-    justify-content: center;
-}
-
-.container-classificacao .blocos{
+    margin-bottom: 150px;
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
+    justify-content: center;
 }
 
-.container-classificacao .blocos .bloco{
+.container-classificacao .bloco{
     background-color: lightcyan;
     padding: 5px;
     border-radius: 5px;
@@ -45,12 +47,12 @@ header{
     transition: .3s;
 }
 
-.container-classificacao .blocos .bloco h1 a{
+.container-classificacao .bloco h1 a{
     text-decoration: none;
     color: black;
 }
 
-.container-classificacao .blocos .bloco:hover{
+.container-classificacao .bloco:hover{
     background-color: lightgreen;
     transform: scale(1.05);
 }
@@ -62,7 +64,7 @@ header{
 }
 
 .container-overflow .carrosel{
-    margin-top: 50px;
+    margin-top: 100px;
 }
 
 .container-jogos .seta-esq, .seta-dir{
@@ -150,6 +152,10 @@ header{
         gap: 10px;
     }
 
+    .container-carrosel .imagem-esq{
+        width: 100%;
+    }
+
     .hamburguer{
         display: block;
     }
@@ -178,4 +184,29 @@ header{
         width: 100%;
         text-align: center;
     }
+
+    .container-overflow .carrosel .text{
+        width: 80%;
+    }
+
+    .button h1{
+        width: 80%;
+    }
+
+}
+
+
+@media (max-width: 650px) {
+    .container-jogos .seta-esq, .seta-dir{
+        display: none;
+    }
+
+    .container-overflow .carrosel .container-jogos .jogos{
+        display: flex;
+        gap: 20px;
+        overflow-x: scroll;
+        overflow-y: auto;
+        scroll-behavior: smooth;
+    }
+
 }
