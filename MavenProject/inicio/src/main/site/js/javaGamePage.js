@@ -36,19 +36,10 @@ for (let i = 1; i <= 3; i++) {
 
 baixo.innerHTML = strBAIXO;
 
-// FORUM
+// abrir e fechar comentários
 
 const rosto = document.querySelector(".forum i");
 let contador = 0;
-let userComent = [];
-
-for (let i = 0; i < 5; i++) {
-    userComent[i] = {
-        number: i,
-        comentario: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequatur, excepturi harum maxime esse illo sequi fugit consequuntur tempora! Vitae, aliquid.",
-    }
-}
-
 
 rosto.addEventListener("click", () => {
 
@@ -69,122 +60,49 @@ rosto.addEventListener("click", () => {
 
 });
 
-function comentarios () {
-   const inserirComentario = document.querySelector(".container-comentario");
-    let comentarios = "";
+// abrir e fechar os subcomentarios
 
-    for (let i = 0; i < 5; i++) {
-        comentarios+= `
-        <div class="comentario">
-            <div class="container">
-                <div class="imagem">
-                    <i class="fa-solid fa-user fa-2xl"></i>
-                </div>
-                <div class="upvote">
-                    <i class="fa-solid fa-arrow-up fa-xl" id="upper"></i>
-                    <h4 class="number"> ${userComent[i].number} </h4>
-                    <i class="fa-solid fa-arrow-down fa-xl" id="down"></i>
-                </div>
-            </div>
-            <div class="comment">
-                <h3>${userComent[i].comentario}</h3>
-            </div>
-        </div>
-        `        
-    }
+const respotas = document.querySelectorAll(".respostas h6");
 
-    inserirComentario.innerHTML = comentarios;
+respotas.forEach(resp => {
+    
+    resp.addEventListener("click", () => {
+        if(resp.classList == "open"){
+            resp.classList.remove("open");
+            const campo_preencher = document.querySelectorAll(".campo_preencher");
+            campo_preencher.forEach(element => {
+                element.style.display = "none";
+            });
+        }
+        else{ 
+            resp.classList.add("open");
+            const campo_preencher = document.querySelectorAll(".campo_preencher");
+            campo_preencher.forEach(element => {
+                element.style.display = "block";
+            });
+        }
+    })
+});
 
-}
+// Comentários
 
-// Up e Down vote
+const abrir_mais = document.querySelectorAll(".abrir");
 
-const upper_vote = document.getElementById("upper");
-const down_vote = document.getElementById("down");
-let number = document.querySelector(".number");
-let valor = 0;
-
-upper_vote.addEventListener("click", () => {
-    if (upper_vote.classList[3] != "verde") {
-        if (down_vote.classList[3] == "vermelho") {
-            valor += 1;
-            if (valor < 10) {
-                number.innerHTML = "0" + "" + valor;
-            }
-            else {
-                number.innerHTML = valor;
-            }
-            upper_vote.style.color = "green";
-            upper_vote.classList.add("verde");
-            down_vote.classList.remove("vermelho");
-            down_vote.style.color = "black";
+abrir_mais.forEach(abrir => {
+    abrir.addEventListener("click", () => {
+        if (abrir.classList[1] == "open") {
+            abrir.classList.remove("open");
+            let comentarios = document.querySelectorAll(".comment-inside");
+            comentarios.forEach(coment => {
+                coment.style.display = "none";
+            });
         }
-        else {
-            valor++;
-            if (valor < 10) {
-                number.innerHTML = "0" + "" + valor;
-            }
-            else {
-                number.innerHTML = valor;
-            }
-            upper_vote.style.color = "green";
-            upper_vote.classList.add("verde");
+        else{
+            abrir.classList.add("open");
+            let comentarios = document.querySelectorAll(".comment-inside");
+            comentarios.forEach(coment => {
+                coment.style.display = "flex";
+            });
         }
-    }
-    else {
-        upper_vote.style.color = "black";
-        valor--;
-        if (valor < 10) {
-            number.innerHTML = "0" + "" + valor;
-        }
-        else {
-            number.innerHTML = valor;
-        }
-        upper_vote.classList.remove("verde");
-    }
-})
-
-down_vote.addEventListener("click", () => {
-    if (down_vote.classList[3] != "vermelho") {
-        if (upper_vote.classList[3] == "verde") {
-            if (valor > 0) {
-                valor -= 1;
-                if (valor < 10) {
-                    number.innerHTML = "0" + "" + valor;
-                }
-                else {
-                    number.innerHTML = valor;
-                }
-                down_vote.style.color = "red";
-                down_vote.classList.add("vermelho");
-                upper_vote.classList.remove("verde");
-                upper_vote.style.color = "black";
-            }
-        }
-        else {
-            if (valor > 0) {
-                valor--;
-                if (valor < 10) {
-                    number.innerHTML = "0" + "" + valor;
-                }
-                else {
-                    number.innerHTML = valor;
-                }
-                down_vote.style.color = "red";
-                down_vote.classList.add("vermelho");
-            }
-        }
-    } else {
-        down_vote.style.color = "black";
-        if (valor > 0) {
-            valor++;
-            if (valor < 10) {
-                number.innerHTML = "0" + "" + valor;
-            }
-            else {
-                number.innerHTML = valor;
-            }
-        }
-        down_vote.classList.remove("vermelho");
-    }
-})
+    })
+});

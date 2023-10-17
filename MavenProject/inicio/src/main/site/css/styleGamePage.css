@@ -52,10 +52,11 @@
 
 .forum{
     position: relative;
-    z-index: 10;
+    z-index: 5;
     display: flex;
+    margin: auto;
+    width: 95%;
     top: 25px;
-    left: 20px;
     justify-content: start;
     align-items: center;
 }
@@ -74,79 +75,99 @@
 
 .container-forum{
     background-color: lightsalmon;
+    margin: 50px 10px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.container-forum .container-comentarios{
+    width: 45%;
+}
+
+.container-forum .container-comentarios .comment{
+    display: flex;
+    padding: 5px;
+    gap: 10px;
+    align-items: center;
+    text-align: justify;
+    background-color: lightslategray;
+    border-radius: 10px;
+}
+
+.container-forum .container-comentarios .comment .respostas{ 
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: end;
+}
+
+.container-forum .container-comentarios .imagem-perfil{
+    background-color: lightblue;
+    padding: 20px;
+}
+
+.container-forum .container-comentarios .comment-inside{
+    width: 90%;
+    margin: auto;
+    display: flex;
+    padding: 5px;
+    gap: 10px;
+    align-items: center;
+    text-align: justify;
+    background-color: lightslategray;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.container-forum .container-comentarios .comment-inside .respostas{ 
+    display: flex;
+    justify-content: end;
+}
+
+.container-forum .container-comentarios .comment-inside{
+    display: none;
+}
+
+/* abrir os comentarios */
+
+.abrir{
+    cursor: pointer;
+}
+
+.respostas h6{
+    cursor: pointer;
+}
+
+
+/* Campo Preencher */
+
+.campo_preencher{
+    display: none;
+}
+
+.campo_preencher label {
+    margin-top: 5px;
     display: flex;
     gap: 10px;
 }
 
-/* Parte detonado */
-
-.container-forum .detonado{
-    background-color: lightblue;
-    margin: 10px 0px 10px 5px;
-    width: 40%;
+.campo_preencher textarea{
+    width: 100%;
+    border: none;
+    background-color: transparent;
+    border-bottom: solid black 2px;
 }
 
-.container-forum .detonado h1{
-    margin-bottom: 5px;
-}
-
-/* Parte comentário */
-
-.container-forum{
-    display: none;
-    margin: 50px 10px;
-}
-
-.container-forum .container-comentario{
-    width: 60%;
-}
-
-.container-forum .container-comentario .comentario{
-    display: flex;
-    justify-content: space-between;
-    margin: 20px 20px;
-    background-color: lightgreen;
-    padding: 10px;
-    border-radius: 20px;
-}
-
-.container-forum .container-comentario .comentario .imagem{
-    width: 10%;
-    display: flex;
-    justify-content: center;
-    padding: 30px;
-    border-radius: 10px;
-    margin: 10px auto;
-    background-color: lightblue;
-}
-
-.container-forum .container-comentario .comentario .comment{
-    width: 80%;
-    text-align: end;
-    font-size: 15px;
-}
-
-.container-forum .container-comentario .comentario .upvote{
-    display: flex;
-    gap: 15px;
-    background-color: lightslategray;
+.campo_preencher input{
+    background-color: lightgrey;
+    padding: 5px;
     border-radius: 5px;
-    padding: 10px;
-}
-
-.container-forum .container-comentario .comentario .upvote i{
     cursor: pointer;
-    margin: auto;
+    border: none;
+    color: black;
 }
-
-.container-forum .container-comentario .comentario .upvote #upper:hover{
-    color: green;
-}
-
-.container-forum .container-comentario .comentario .upvote #down:hover{
-    color: red;
-}
-
 
 @media (max-width: 800px){
     .hamburguer{
@@ -186,22 +207,18 @@
         width: 100%;
     }
 
-    .container-forum{
-        flex-wrap: wrap;
-    }
-
-    .container-forum .container-comentario{
-        width: 100%;
-    }
-
-    .container-forum .detonado{
-        width: 100%;
-    }
-
-    .container-forum .container-comentario .comentario .comment{
+    .container-forum .container-comentarios{
         width: 80%;
-        margin-left: 5px;
-        text-align: justify;
-        font-size: 12px;
+    }
+
+}
+
+@media (max-width: 500px){
+    .container-forum .container-comentarios{
+        width: 100%;
+    }
+
+    .container-forum .container-comentarios p{
+        font-size: 10px;
     }
 }

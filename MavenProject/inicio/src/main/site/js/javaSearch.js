@@ -4,7 +4,7 @@ const divJOGOS = document.querySelector('.listgames');
 const vetorGAMES = [];
 let gameSTR = "";
 
-for (let i = 0; i < 20; i++) {
+for (let i = 0; i < 40; i++) {
     vetorGAMES[i] = {
         imgsrc: "",
         nome: `Nome: ${i}`,
