@@ -4,15 +4,7 @@ json (text),
 categoria (int),
 CONSTRAINT fk_games_categoria FOREIGN KEY (categoria) REFERENCES categoria(id)
 )
---resgatar appid dos games ordenado
-select appid from games order by appid
 
---resgatar json dos games ordenado e inserir
---loop de GetGameJson 200 requisições por hora
-insert into games (appid, json) values (appid, json)
-
-
-create table usuario
 
 CREATE TABLE usuario (
   ID SERIAL PRIMARY KEY,
@@ -62,6 +54,13 @@ CREATE TABLE comentario (
 CREATE TABLE categoria{
 id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 nome VARCHAR(45) NOT NULL
+}
+
+CREATE TABLE subcoment{
+  id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  conteudo text NOT NULL,
+  comentID INT NOT NULL,
+  CONSTRAINT fk_subcoment_ComentID FOREIGN KEY(comentID) REFERENCE comentario(ID)
 }
 
 
