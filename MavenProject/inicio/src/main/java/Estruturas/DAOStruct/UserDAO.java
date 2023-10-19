@@ -1,4 +1,4 @@
-package Estruturas;
+package Estruturas.DAOStruct;
 
 
 import java.sql.PreparedStatement;
@@ -11,7 +11,7 @@ import java.sql.ResultSet;
 
 
 public class UserDAO extends DAO {
-    UserDAO() {
+    public UserDAO() {
         super();
     }
     // super() chama o construtor da classe pai, no caso DAO. que retorna a conexao

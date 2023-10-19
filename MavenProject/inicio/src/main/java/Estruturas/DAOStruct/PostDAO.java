@@ -1,4 +1,4 @@
-package Estruturas;
+package Estruturas.DAOStruct;
 
 import java.util.ArrayList;
 import java.util.LinkedList;

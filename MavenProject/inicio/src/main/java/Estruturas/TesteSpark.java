@@ -4,6 +4,8 @@ import static spark.Spark.*;
 
 import com.google.gson.Gson;
 
+import Estruturas.DAOStruct.UserDAO;
+
 public class TesteSpark {
     public static void main(String[] args) {
         UserDAO teste = new UserDAO();
