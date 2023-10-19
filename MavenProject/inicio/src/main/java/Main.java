@@ -10,10 +10,8 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;*/
 
 import java.util.LinkedList;
-import Estruturas.Objetos.Game;
-import Estruturas.GameDAO; 
-import Estruturas.PostDAO;
-import Estruturas.Objetos.Post;
+import Estruturas.Objetos.*;
+import Estruturas.DAOStruct.*;
 
 public class Main {
    
