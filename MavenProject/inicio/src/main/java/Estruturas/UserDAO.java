@@ -119,7 +119,7 @@ public class UserDAO extends DAO {
         String sql = "SELECT * FROM usario WHERE nome = " + login + "AND senha = " + senha;
         PreparedStatement preparedStatement = conexao.prepareStatement(sql);
         ResultSet resultSet = preparedStatement.executeQuery();
-        System.out.println(resultSet);
+        //System.out.println(resultSet);
         if (resultSet.toString() == "") {
             return false;
         }
