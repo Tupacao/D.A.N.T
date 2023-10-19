@@ -4,7 +4,7 @@ package Estruturas.DAOStruct;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.LinkedList;
-
+import Estruturas.Tools.*;
 import Estruturas.Objetos.User;
 
 import java.sql.ResultSet;
@@ -20,11 +20,14 @@ public class UserDAO extends DAO {
     // usuario tem as colunas id,nome,senha,emailfoto,datanasc,datacadastro
     // lembre se que ID de usuario é serial, não precisa inseri-lo;
 
-    public boolean inserirUsuario(String nome, String senha, String email, byte[] foto, java.sql.Date dataNasc,
-            java.sql.Date dataCadastro) {
+    public boolean inserirUsuario(String nome, String senha, String email, java.sql.Date dataNasc) {
         try {
+            
+            senha = Converter.CriptografarMd5(senha);
+
+
             // SQL para inserir um novo usuário
-            String sql = "INSERT INTO usuario (nome, senha, email, foto, datanasc, datacadastro) VALUES (?, ?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO usuario (nome, senha, email, datanasc) VALUES (?, ?, ?, ?)";
 
             // Cria um PreparedStatement com a consulta SQL
             PreparedStatement preparedStatement = conexao.prepareStatement(sql);
@@ -32,10 +35,9 @@ public class UserDAO extends DAO {
             // Define os parâmetros da consulta com os valores passados como argumentos
             preparedStatement.setString(1, nome);
             preparedStatement.setString(2, senha);
-            preparedStatement.setString(3, email);
-            preparedStatement.setBytes(4, foto);
-            preparedStatement.setDate(5, dataNasc);
-            preparedStatement.setDate(6, dataCadastro);
+            preparedStatement.setString(3, email);  
+            preparedStatement.setDate(4, dataNasc);
+          
 
             // Executa a consulta de inserção
              preparedStatement.executeUpdate();
@@ -78,9 +80,8 @@ public class UserDAO extends DAO {
                 String email = resultSet.getString("email");
                 byte[] foto = resultSet.getBytes("foto");
                 java.sql.Date dataNasc = resultSet.getDate("datanasc");
-                java.sql.Date dataCadastro = resultSet.getDate("datacadastro");
                 boolean assinatura = resultSet.getBoolean("assinatura");
-                usuario = new User(idUsuario,nome,senha,email,foto,dataNasc,dataCadastro,assinatura);
+                usuario = new User(idUsuario,nome,senha,email,foto,dataNasc,assinatura);
 
                 return usuario;
             }else{
@@ -106,9 +107,8 @@ public class UserDAO extends DAO {
             String email = resultSet.getString("email");
             byte[] foto = resultSet.getBytes("foto");
             java.sql.Date dataNasc = resultSet.getDate("datanasc");
-            java.sql.Date dataCadastro = resultSet.getDate("datacadastro");
             boolean assinatura = resultSet.getBoolean("assinatura");
-            usuarios.add(new User(idUsuario,nome,senha,email,foto,dataNasc,dataCadastro,assinatura));
+            usuarios.add(new User(idUsuario,nome,senha,email,foto,dataNasc,assinatura));
         }
 
 
@@ -116,6 +116,8 @@ public class UserDAO extends DAO {
     }
 
     public boolean authentication (String login, String senha)throws Exception{
+        senha = Converter.CriptografarMd5(senha);
+
         String sql = "SELECT * FROM usario WHERE nome = " + login + "AND senha = " + senha;
         PreparedStatement preparedStatement = conexao.prepareStatement(sql);
         ResultSet resultSet = preparedStatement.executeQuery();
@@ -141,6 +143,7 @@ public class UserDAO extends DAO {
         }
     }
     public boolean updateUserPassword(int id, String newPassword) {
+        newPassword = Converter.CriptografarMd5(newPassword);
         String sql = "UPDATE usuario SET senha = ? WHERE id = ?";
         try {
             PreparedStatement preparedStatement = conexao.prepareStatement(sql);
@@ -196,19 +199,6 @@ public class UserDAO extends DAO {
         }
     }
 
-    public boolean updateUserRegistrationDate(int id, java.sql.Date newRegistrationDate) {
-        String sql = "UPDATE usuario SET datacadastro = ? WHERE id = ?";
-        try {
-            PreparedStatement preparedStatement = conexao.prepareStatement(sql);
-            preparedStatement.setDate(1, newRegistrationDate);
-            preparedStatement.setInt(2, id);
-            preparedStatement.executeUpdate();
-            return true;
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return false;
-        }
-    }
     
     public boolean updateSubscription(int id, boolean newSubscription) {
         String sql = "UPDATE usuario SET assinatura = ? WHERE id = ?";
@@ -226,20 +216,6 @@ public class UserDAO extends DAO {
     
     
 
-    //atualizar assinatura de usuario
-    public boolean updateAssinaturaByID(int id, boolean assinatura) {
-        String sql = "UPDATE usuario SET assinatura = ? WHERE id = ?";
-        try {
-            PreparedStatement preparedStatement = conexao.prepareStatement(sql);
-            preparedStatement.setBoolean(1, assinatura);
-            preparedStatement.setInt(2, id);
-            preparedStatement.executeUpdate();
-            return true;
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return false;
-        }
-    }
 
 
 }

@@ -19,7 +19,7 @@ public class SubComentDAO extends DAO{
 
    }
 
-   public LinkedList<SubComent> getSubcomentByParameters(int comentID,int userid,String conteudo) throws SQLException{
+   public LinkedList<SubComent> getSubcomentBy(int comentID,int userid,String conteudo) throws SQLException{
     LinkedList<SubComent> subcoments = new LinkedList<SubComent>();
     String sql = "select * from subcoment where 1=1";
     if(comentID > 0){
@@ -53,7 +53,7 @@ public class SubComentDAO extends DAO{
     preparedStatement.executeUpdate();
    }
 
-   public void DeleteSubcomentByParameters(int UserId, int ComentID) throws SQLException{
+   public void DeleteSubcomentBy(int UserId, int ComentID) throws SQLException{
     String sql = "delete from subcoment where 1=1";
     if(UserId > 0){
         sql += " and user_id = " + UserId;

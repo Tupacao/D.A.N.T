@@ -14,28 +14,26 @@ public class User {
 
     }
     //construtor para inserir no banco
-   public User(String nome, String senha, String email, byte[] foto, java.sql.Date dataNasc, java.sql.Date dataCadastro,boolean assinatura) {
+   public User(String nome, String senha, String email, byte[] foto, java.sql.Date dataNasc) {
     
         this.nome = nome;
         this.senha = senha;
         this.email = email;
         this.foto = foto;
         this.dataNasc = dataNasc;
-        this.dataCadastro = dataCadastro;
         this.assinatura = assinatura;
 
 
 
     }
     //construtor para pegar do banco
-    public   User(int id,String nome, String senha, String email, byte[] foto, java.sql.Date dataNasc, java.sql.Date dataCadastro, boolean assinatura) {
+    public  User(int id,String nome, String senha, String email, byte[] foto, java.sql.Date dataNasc, boolean assinatura) {
         this.id = id;
         this.nome = nome;
         this.senha = senha;
         this.email = email;
         this.foto = foto;
         this.dataNasc = dataNasc;
-        this.dataCadastro = dataCadastro;
         this.assinatura = assinatura;
 
     }
@@ -60,7 +58,6 @@ public class User {
         this.dataNasc = dataNasc;
     }
     public void setDataCadastro(java.sql.Date dataCadastro) {
-        this.dataCadastro = dataCadastro;
     }
     public void setAssinatura(boolean assinatura){
         this.assinatura = assinatura;
