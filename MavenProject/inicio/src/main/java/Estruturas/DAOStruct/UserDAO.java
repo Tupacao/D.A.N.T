@@ -127,19 +127,12 @@ public class UserDAO extends DAO {
     }
 
 
-    public boolean updateUserByID(int id, String nome, String senha, String email, byte[] foto, java.sql.Date dataNasc,
-            java.sql.Date dataCadastro, boolean assinatura) {
-        String sql = "UPDATE usuario SET nome = ?, senha = ?, email = ?, foto = ?, datanasc = ?, datacadastro = ?, assinatura = ? WHERE id = ?";
+    public boolean updateUserName(int id, String newUserName) {
+        String sql = "UPDATE usuario SET nome = ? WHERE id = ?";
         try {
             PreparedStatement preparedStatement = conexao.prepareStatement(sql);
-            preparedStatement.setString(1, nome);
-            preparedStatement.setString(2, senha);
-            preparedStatement.setString(3, email);
-            preparedStatement.setBytes(4, foto);
-            preparedStatement.setDate(5, dataNasc);
-            preparedStatement.setDate(6, dataCadastro);
-            preparedStatement.setBoolean(7, assinatura);
-            preparedStatement.setInt(8, id);
+            preparedStatement.setString(1, newUserName);
+            preparedStatement.setInt(2, id);
             preparedStatement.executeUpdate();
             return true;
         } catch (SQLException e) {
@@ -147,6 +140,91 @@ public class UserDAO extends DAO {
             return false;
         }
     }
+    public boolean updateUserPassword(int id, String newPassword) {
+        String sql = "UPDATE usuario SET senha = ? WHERE id = ?";
+        try {
+            PreparedStatement preparedStatement = conexao.prepareStatement(sql);
+            preparedStatement.setString(1, newPassword);
+            preparedStatement.setInt(2, id);
+            preparedStatement.executeUpdate();
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+    
+    public boolean updateUserEmail(int id, String newEmail) {
+        String sql = "UPDATE usuario SET email = ? WHERE id = ?";
+        try {
+            PreparedStatement preparedStatement = conexao.prepareStatement(sql);
+            preparedStatement.setString(1, newEmail);
+            preparedStatement.setInt(2, id);
+            preparedStatement.executeUpdate();
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public boolean updateUserPhoto(int id, byte[] newPhoto) {
+        String sql = "UPDATE usuario SET foto = ? WHERE id = ?";
+        try {
+            PreparedStatement preparedStatement = conexao.prepareStatement(sql);
+            preparedStatement.setBytes(1, newPhoto);
+            preparedStatement.setInt(2, id);
+            preparedStatement.executeUpdate();
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+    
+    public boolean updateUserDateOfBirth(int id, java.sql.Date newDateOfBirth) {
+        String sql = "UPDATE usuario SET datanasc = ? WHERE id = ?";
+        try {
+            PreparedStatement preparedStatement = conexao.prepareStatement(sql);
+            preparedStatement.setDate(1, newDateOfBirth);
+            preparedStatement.setInt(2, id);
+            preparedStatement.executeUpdate();
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public boolean updateUserRegistrationDate(int id, java.sql.Date newRegistrationDate) {
+        String sql = "UPDATE usuario SET datacadastro = ? WHERE id = ?";
+        try {
+            PreparedStatement preparedStatement = conexao.prepareStatement(sql);
+            preparedStatement.setDate(1, newRegistrationDate);
+            preparedStatement.setInt(2, id);
+            preparedStatement.executeUpdate();
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+    
+    public boolean updateSubscription(int id, boolean newSubscription) {
+        String sql = "UPDATE usuario SET assinatura = ? WHERE id = ?";
+        try {
+            PreparedStatement preparedStatement = conexao.prepareStatement(sql);
+            preparedStatement.setBoolean(1, newSubscription);
+            preparedStatement.setInt(2, id);
+            preparedStatement.executeUpdate();
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+    
+    
 
     //atualizar assinatura de usuario
     public boolean updateAssinaturaByID(int id, boolean assinatura) {
