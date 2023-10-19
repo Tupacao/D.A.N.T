@@ -1,18 +1,10 @@
 Create table games(
 appid (int) priumary key,
-json (text)
-
-    
+json (text),
+categoria (int),
+CONSTRAINT fk_games_categoria FOREIGN KEY (categoria) REFERENCES categoria(id)
 )
---resgatar appid dos games ordenado
-select appid from games order by appid
 
---resgatar json dos games ordenado e inserir
---loop de GetGameJson 200 requisições por hora
-insert into games (appid, json) values (appid, json)
-
-
-create table usuario
 
 CREATE TABLE usuario (
   ID SERIAL PRIMARY KEY,
@@ -23,8 +15,6 @@ CREATE TABLE usuario (
   DataNasc DATE NOT NULL,
   DataCadastro DATE NOT NULL
 );
-
-
 
 
 CREATE TABLE Forum (
@@ -42,9 +32,12 @@ CREATE TABLE Posts (
   Postagem TEXT NOT NULL,
   Forum_ID INT NOT NULL,
   User_ID INT NOT NULL,
+  categoria_ID INT NOT NULL,
   PRIMARY KEY (id),
   CONSTRAINT fk_Post_ForumID FOREIGN KEY (Forum_ID)  REFERENCES forum (id),
-  CONSTRAINT fk_Post_UserID FOREIGN KEY (User_ID) REFERENCES usuario (id)
+  CONSTRAINT fk_Post_UserID FOREIGN KEY (User_ID) REFERENCES usuario (id),
+  CONSTRAINT fk_Post_CategoriaID FOREIGN KEY (categoria_ID) REFERENCES categoria (id)
+
 );
 
 
@@ -57,4 +50,17 @@ CREATE TABLE comentario (
   CONSTRAINT fk_Coment_postId FOREIGN KEY (PostID) REFERENCES Posts(ID),
   CONSTRAINT fk_Coment_userId FOREIGN KEY (UserID) REFERENCES User(ID)
 );
+
+CREATE TABLE categoria{
+id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+nome VARCHAR(45) NOT NULL
+}
+
+CREATE TABLE subcoment{
+  id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  conteudo text NOT NULL,
+  comentID INT NOT NULL,
+  CONSTRAINT fk_subcoment_ComentID FOREIGN KEY(comentID) REFERENCE comentario(ID)
+}
+
 

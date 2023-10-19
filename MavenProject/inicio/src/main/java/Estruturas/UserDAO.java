@@ -115,6 +115,17 @@ public class UserDAO extends DAO {
         return usuarios;
     }
 
+    public boolean authentication (String login, String senha)throws Exception{
+        String sql = "SELECT * FROM usario WHERE nome = " + login + "AND senha = " + senha;
+        PreparedStatement preparedStatement = conexao.prepareStatement(sql);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        System.out.println(resultSet);
+        if (resultSet.toString() == "") {
+            return false;
+        }
+        return true;
+    }
+
 
     public boolean updateUserByID(int id, String nome, String senha, String email, byte[] foto, java.sql.Date dataNasc,
             java.sql.Date dataCadastro, boolean assinatura) {
