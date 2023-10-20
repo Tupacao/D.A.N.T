@@ -116,10 +116,9 @@ public class UserDAO extends DAO {
     }
 
     public boolean authentication (String login, String senha)throws Exception{
-        String sql = "SELECT * FROM usario WHERE nome = " + login + "AND senha = " + senha;
+        String sql = "SELECT * FROM usuario WHERE nome = '" + login + "' AND senha = '" + senha + "';";
         PreparedStatement preparedStatement = conexao.prepareStatement(sql);
         ResultSet resultSet = preparedStatement.executeQuery();
-        //System.out.println(resultSet);
         if (resultSet.toString() == "") {
             return false;
         }
