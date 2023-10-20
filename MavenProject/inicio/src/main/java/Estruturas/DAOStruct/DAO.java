@@ -1,4 +1,4 @@
-package Estruturas;
+package Estruturas.DAOStruct;
 
 import java.sql.PreparedStatement;
 import java.sql.Connection;

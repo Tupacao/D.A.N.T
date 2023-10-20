@@ -10,15 +10,13 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;*/
 
 import java.util.LinkedList;
-import Estruturas.Objetos.Game;
-import Estruturas.GameDAO; 
-import Estruturas.PostDAO;
-import Estruturas.Objetos.Post;
+import Estruturas.Objetos.*;
+import Estruturas.DAOStruct.*;
 
 public class Main {
    
    public static void main(String[] args) throws Exception {
-
+/* 
      
       GameDAO gamedao = new GameDAO();
       
@@ -34,8 +32,14 @@ public class Main {
          gamedao.InsertJson(gamedata.getAppid(), gamedata.getJson());
 
 
-      });
-       
+      }); */
+
+      UserDAO userdao = new UserDAO();
+      //print os usuarios
+      for(User e : userdao.getAllUsers()){
+         System.out.println(e.getEmail() + " " + e.getSenha() + " \n");
+      }
+      System.out.println( "AUTENTICANDO...\n" + userdao.authentication("gaok@gmail.com","Kamado2022"));
    }
 
 }

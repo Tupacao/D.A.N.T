@@ -1,4 +1,4 @@
-package Estruturas;
+package Estruturas.DAOStruct;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -8,7 +8,7 @@ import java.util.LinkedList;
 
 public class ForumDAO extends DAO {
 
-    ForumDAO() {
+    public ForumDAO() {
         super();
     }
 

@@ -1,4 +1,4 @@
-package Estruturas;
+package Estruturas.DAOStruct;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -17,15 +17,15 @@ public class PostDAO extends DAO {
 
     // as colunas em post se chamam id,postagem,forumID,UserID,categoria
 
-    public boolean InserirPostagem(int id, String postagem, int forumID, int UserID, int categoria) {
-        String sql = "INSERT INTO posts (id,postagem,forumID,UserID,categoria) VALUES (?,?,?,?,?)";
+    public boolean InserirPostagem(String postagem, int forumID, int UserID, int categoria) {
+        String sql = "INSERT INTO posts (postagem,forumID,UserID,categoria) VALUES (?,?,?,?)";
         try {
             PreparedStatement preparedStatement = conexao.prepareStatement(sql);
-            preparedStatement.setInt(1, id);
-            preparedStatement.setString(2, postagem);
-            preparedStatement.setInt(3, forumID);
-            preparedStatement.setInt(4, UserID);
-            preparedStatement.setInt(5, categoria);
+            
+            preparedStatement.setString(1, postagem);
+            preparedStatement.setInt(2, forumID);
+            preparedStatement.setInt(3, UserID);
+            preparedStatement.setInt(4, categoria);
             preparedStatement.executeUpdate();
             return true;
         } catch (SQLException e) {
@@ -114,7 +114,7 @@ public class PostDAO extends DAO {
         return posts;
     }
 
-    public LinkedList<Post> DeltePostsBy(int forumIdP, int userIDP, int categoriaP) {
+    public LinkedList<Post> DeletePostsBy(int forumIdP, int userIDP, int categoriaP) {
         LinkedList<Post> posts = new LinkedList<Post>();
 
         // Defina a consulta SQL base

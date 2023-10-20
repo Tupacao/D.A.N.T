@@ -1,4 +1,4 @@
-package Estruturas;
+package Estruturas.DAOStruct;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -97,4 +97,20 @@ public class GameDAO extends DAO {
         }
     }
 
+     public LinkedList<Game> getGamesByGenero(String genero) throws Exception {
+        LinkedList<Game> games = new LinkedList<Game>();
+
+        String sql = "SELECT * FROM games where json like '%" +genero+"%' ORDER BY appid;";
+
+        PreparedStatement preparedStatement = conexao.prepareStatement(sql);
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+        while (resultSet.next()) {
+            games.add(new Game(resultSet.getInt("appid"), resultSet.getString("nome"), resultSet.getString("json")));
+            
+        }
+
+        return games;
+
+    }
 }

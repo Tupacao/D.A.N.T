@@ -5,23 +5,23 @@ public class Comentario {
     String comentario;
     int postID;
     int userID;
-    java.sql.Date data;
+    java.sql.Date dataPostagem;
 
     //construtor para pegar do banco
-    public Comentario(int id, String comentario, int postID, int userID, java.sql.Date data) {
+    public Comentario(int id, String comentario, int postID, int userID, java.sql.Date dataPostagem) {
         this.id = id;
         this.comentario = comentario;
         this.postID = postID;
         this.userID = userID;
-        this.data = data;
+        this.dataPostagem = dataPostagem;
     }
 
     //construtor para inserir no banco
-    public Comentario(String comentario, int postID, int userID, java.sql.Date data) {
+    public Comentario(String comentario, int postID, int userID, java.sql.Date dataPostagem) {
         this.comentario = comentario;
         this.postID = postID;
         this.userID = userID;
-        this.data = data;
+        this.dataPostagem = dataPostagem;
     }
 
 
@@ -38,8 +38,8 @@ public class Comentario {
     public void setUserID(int userID) {
         this.userID = userID;
     }
-    public void setData(java.sql.Date data) {
-        this.data = data;
+    public void setdataPostagem(java.sql.Date dataPostagem) {
+        this.dataPostagem = dataPostagem;
     }
 
     //getters
@@ -55,8 +55,8 @@ public class Comentario {
     public int getUserID() {
         return userID;
     }
-    public java.sql.Date getData() {
-        return data;
+    public java.sql.Date getdataPostagem() {
+        return dataPostagem;
     }
 
 

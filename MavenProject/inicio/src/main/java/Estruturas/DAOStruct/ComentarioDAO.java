@@ -1,4 +1,4 @@
-package Estruturas;
+package Estruturas.DAOStruct;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -27,6 +27,20 @@ public class ComentarioDAO extends DAO {
             return false;
         }
 
+    }
+
+    public boolean UpdateComentario(int id, String newcomet)throws Exception{
+        try{ 
+           String sql = "UPDATE comentarios SET coment = ? WHERE id = ?";
+        PreparedStatement ps = conexao.prepareStatement(sql);
+        ps.setInt(1, id);
+        ps.setString(2, newcomet);
+        ps.executeUpdate();
+        return true; 
+        }catch(SQLException e){
+            e.printStackTrace();
+            return false;
+        }
     }
 
     public boolean DeleteComentarioById(int id) // id do comentario
