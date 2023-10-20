@@ -3,6 +3,8 @@ package Estruturas.DAOStruct;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.LinkedList;
 import Estruturas.Tools.*;
 import Estruturas.Objetos.User;
@@ -20,34 +22,58 @@ public class UserDAO extends DAO {
     // usuario tem as colunas id,nome,senha,emailfoto,datanasc,datacadastro
     // lembre se que ID de usuario é serial, não precisa inseri-lo;
 
-    public boolean inserirUsuario(String nome, String senha, String email, java.sql.Date dataNasc) {
+    public boolean autenticandoEmail(String email){
+        String sql = "SELECT * FROM usuario WHERE email = ?";
+        try{
+            PreparedStatement preparedStatement = conexao.prepareStatement(sql);
+            preparedStatement.setString(1, email);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if(resultSet.next()){
+                return true;
+            }else{
+                return false;
+            }
+        }catch(SQLException e){
+            e.printStackTrace();
+            return false;
+        }
+
+    }
+
+    public boolean inserirUsuario(String nome, String senha, String email, String dataNascStr) {
+       if( !autenticandoEmail(email)) { return false;} //validando email
+       
         try {
-            
             senha = Converter.CriptografarMd5(senha);
-
-
+    
+            // Converte a data de String para java.util.Date usando SimpleDateFormat
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            java.util.Date parsedDate = dateFormat.parse(dataNascStr);
+            java.sql.Date dataNasc = new java.sql.Date(parsedDate.getTime());
+    
             // SQL para inserir um novo usuário
             String sql = "INSERT INTO usuario (nome, senha, email, datanasc) VALUES (?, ?, ?, ?)";
-
+    
             // Cria um PreparedStatement com a consulta SQL
             PreparedStatement preparedStatement = conexao.prepareStatement(sql);
-
+    
             // Define os parâmetros da consulta com os valores passados como argumentos
             preparedStatement.setString(1, nome);
             preparedStatement.setString(2, senha);
             preparedStatement.setString(3, email);  
             preparedStatement.setDate(4, dataNasc);
-          
-
+    
             // Executa a consulta de inserção
-             preparedStatement.executeUpdate();
+            preparedStatement.executeUpdate();
             return true;
-        } catch (SQLException e) {
+        } catch (SQLException | ParseException e) {
             e.printStackTrace();
             // Trate a exceção aqui, registre-a ou retorne um valor de erro adequado
             return false;
         }
     }
+    
+
   
 
     public boolean deleteUserByID(int id){
@@ -114,19 +140,24 @@ public class UserDAO extends DAO {
 
         return usuarios;
     }
-
-    public boolean authentication (String login, String senha)throws Exception{
+    public boolean authentication(String email, String senha) throws SQLException {
         senha = Converter.CriptografarMd5(senha);
-
-        String sql = "SELECT * FROM usario WHERE nome = " + login + "AND senha = " + senha;
+    
+        String sql = "SELECT * FROM usuario WHERE email = ? and senha = ?";
         PreparedStatement preparedStatement = conexao.prepareStatement(sql);
+        preparedStatement.setString(1, email);
+        preparedStatement.setString(2, senha);
+    
         ResultSet resultSet = preparedStatement.executeQuery();
-        //System.out.println(resultSet);
-        if (resultSet.toString() == "") {
-            return false;
+    
+        // Verifica se o ResultSet contém alguma linha
+        if (resultSet.next()) {
+            return true;  // Usuário encontrado
+        } else {
+            return false; // Usuário não encontrado
         }
-        return true;
     }
+    
 
 
     public boolean updateUserName(int id, String newUserName) {

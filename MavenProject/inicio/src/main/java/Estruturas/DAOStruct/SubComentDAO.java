@@ -19,6 +19,20 @@ public class SubComentDAO extends DAO{
 
    }
 
+   public Boolean editSubcoment(String newsubcoment, int id){
+    String sql = "update subcoment set conteudo = ? where id = ?";
+    try{
+        PreparedStatement preparedStatement = conexao.prepareStatement(sql);
+        preparedStatement.setString(1, newsubcoment);
+        preparedStatement.setInt(2, id);
+        preparedStatement.executeUpdate();
+        return true;
+    }catch(SQLException e){
+        e.printStackTrace();
+        return false;
+    }
+   }
+
    public LinkedList<SubComent> getSubcomentBy(int comentID,int userid,String conteudo) throws SQLException{
     LinkedList<SubComent> subcoments = new LinkedList<SubComent>();
     String sql = "select * from subcoment where 1=1";

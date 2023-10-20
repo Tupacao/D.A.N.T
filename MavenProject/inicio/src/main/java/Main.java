@@ -16,7 +16,7 @@ import Estruturas.DAOStruct.*;
 public class Main {
    
    public static void main(String[] args) throws Exception {
-
+/* 
      
       GameDAO gamedao = new GameDAO();
       
@@ -32,8 +32,14 @@ public class Main {
          gamedao.InsertJson(gamedata.getAppid(), gamedata.getJson());
 
 
-      });
-       
+      }); */
+
+      UserDAO userdao = new UserDAO();
+      //print os usuarios
+      for(User e : userdao.getAllUsers()){
+         System.out.println(e.getEmail() + " " + e.getSenha() + " \n");
+      }
+      System.out.println( "AUTENTICANDO...\n" + userdao.authentication("gaok@gmail.com","Kamado2022"));
    }
 
 }
