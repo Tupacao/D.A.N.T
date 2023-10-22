@@ -5,10 +5,20 @@
     scroll-behavior: smooth;
 }
 
+:root{
+    --color1: rgb(20, 20, 20);
+    --color2: white;
+    --color3: rgb(128, 128, 128);
+}
+
+body{
+    background-color: var(--color3);
+}
+
 /* Barra de navegação */
 
 .container-navegar{
-    background-color: lightblue;
+    background-color: var(--color2);
     display: flex;
     justify-content: space-between;
     margin: 0 10px;
@@ -21,17 +31,19 @@
 }
 
 .links ul li a{
-    color: black;
+    color: white;
+    font-size: large;
     text-decoration: none;
 }
 
 .container-navegar .direita .profile{
-    background-color: lightcoral;
-    padding: 20px;
+    background-color: var(--color1);
+    padding: 35px;
 }
 
 .container-navegar .direita .profile i{
     cursor: pointer;
+    color: var(--color2);
 }
 
 .container-navegar .direita .profile{
@@ -39,9 +51,17 @@
 }
 
 .container-navegar .direita .profile:hover{
-    transform: scale(1.05);
+    transform: scale(0.9);
 }
 
+.container-navegar .esquerda a{
+    display: flex;
+    justify-content: center;
+}
+
+.container-navegar .esquerda a img{ 
+    border-radius: 10px;
+}
 
 /* Esquerda-navegação */
 
@@ -58,15 +78,14 @@
 }
 
 .links ul li{
-    background-color: lightgray;
-    padding: 5px;
-    border-radius: 10px;
+    background-color: var(--color1);
+    padding: 30px;
     border: 1px solid black;
     transition: .3s;
 }
 
 .links ul li:hover{
-    transform: scale(1.05);
+    transform: scale(0.9);
 }
 
 /* Hamburger */
@@ -133,7 +152,7 @@
 /* Foooter */
 
 footer{
-    background-color: lightgoldenrodyellow;
+    background-color: var(--color2);
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -155,14 +174,12 @@ footer .descricao{
     }
 
     .container-navegar{
-        background-color: lightblue;
         display: flex;
         justify-content: space-between;
         margin: 0 0px;
     }
 
     footer{
-        background-color: lightgoldenrodyellow;
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
@@ -181,5 +198,12 @@ footer .descricao{
 
     .container-esq{
         width: 100%;
+    }
+}
+
+@media (max-width: 450px){
+    .container-navegar .direita .profile{
+        background-color: var(--color1);
+        padding: 20px;
     }
 }
