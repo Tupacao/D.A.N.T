@@ -193,6 +193,7 @@
 }
 
 @media (max-width: 650px) {
+
     .container-jogos .seta-esq, .seta-dir{
         display: none;
     }

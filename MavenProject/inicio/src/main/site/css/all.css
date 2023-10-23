@@ -161,6 +161,10 @@ footer{
 }
 
 footer .descricao{
+    margin-top: 10px;
+}
+
+footer .descricao{
     width: 50%;
 }
 
@@ -201,9 +205,14 @@ footer .descricao{
     }
 }
 
+@media (max-width: 650px){
+    footer .imagem, .selo{
+        margin-top: 10px;
+    }
+}
+
 @media (max-width: 450px){
     .container-navegar .direita .profile{
-        background-color: var(--color1);
         padding: 20px;
     }
 }
